@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Naruto Free Fire Generator</title>
-    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/freefiregiftsnew/ffgift/main/pngwing.com.png">
+    <link rel="icon" type="image/png" href="pngwing.com.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
-            background-image: url('https://raw.githubusercontent.com/freefiregiftsnew/ffgift/main/outer.jpeg');
+            background-image: url('outer.jpeg');
             background-size: cover;
             background-position: center;
         }
         .container {
-            background-image: url('https://raw.githubusercontent.com/freefiregiftsnew/ffgift/main/inner.jpeg');
+            background-image: url('inner.jpeg');
             background-size: cover;
             background-position: center;
             position: relative;
@@ -100,29 +100,75 @@
         </div>
         <h2 class="text-center text-lg font-bold mb-4">SELECT YOUR REWARDS</h2>
         <div class="image-container" id="image-container">
-            <div class="image-item" onclick="toggleSelection(this, '1.jpg')">
-                <img src="https://raw.githubusercontent.com/freefiregiftsnew/ffgift/main/1.jpg" alt="Reward 1">
+            <div class="image-item" onclick="toggleSelection(this, 'img1.jpg')">
+                <img src="img1.jpg" alt="Reward 1">
             </div>
-            <div class="image-item" onclick="toggleSelection(this, '2.jpg')">
-                <img src="https://raw.githubusercontent.com/freefiregiftsnew/ffgift/main/2.jpg" alt="Reward 2">
+            <div class="image-item" onclick="toggleSelection(this, 'img2.jpg')">
+                <img src="img2.jpg" alt="Reward 2">
             </div>
-            <div class="image-item" onclick="toggleSelection(this, '3.jpg')">
-                <img src="https://raw.githubusercontent.com/freefiregiftsnew/ffgift/main/3.jpg" alt="Reward 3">
+            <div class="image-item" onclick="toggleSelection(this, 'img3.jpg')">
+                <img src="img3.jpg" alt="Reward 3">
             </div>
-            <div class="image-item" onclick="toggleSelection(this, '4.jpg')">
-                <img src="https://raw.githubusercontent.com/freefiregiftsnew/ffgift/main/4.jpg" alt="Reward 4">
+            <div class="image-item" onclick="toggleSelection(this, 'img4.jpg')">
+                <img src="img4.jpg" alt="Reward 4">
             </div>
-            <div class="image-item" onclick="toggleSelection(this, '5.jpg')">
-                <img src="https://raw.githubusercontent.com/freefiregiftsnew/ffgift/main/5.jpg" alt="Reward 5">
+            <div class="image-item" onclick="toggleSelection(this, 'img5.jpg')">
+                <img src="img5.jpg" alt="Reward 5">
             </div>
-            <div class="image-item" onclick="toggleSelection(this, '6.jpg')">
-                <img src="https://raw.githubusercontent.com/freefiregiftsnew/ffgift/main/6.jpg" alt="Reward 6">
+            <div class="image-item" onclick="toggleSelection(this, 'img6.jpg')">
+                <img src="img6.jpg" alt="Reward 6">
             </div>
-            <div class="image-item" onclick="toggleSelection(this, '7.jpg')">
-                <img src="https://raw.githubusercontent.com/freefiregiftsnew/ffgift/main/7.jpg" alt="Reward 7">
+            <div class="image-item" onclick="toggleSelection(this, 'img7.jpg')">
+                <img src="img7.jpg" alt="Reward 7">
             </div>
-            <div class="image-item" onclick="toggleSelection(this, '8.jpg')">
-                <img src="https://raw.githubusercontent.com/freefiregiftsnew/ffgift/main/8.jpg" alt="Reward 8">
+            <div class="image-item" onclick="toggleSelection(this, 'img8.jpg')">
+                <img src="img8.jpg" alt="Reward 8">
             </div>
-            <div class="image-item" onclick="toggleSelection(this, '9.jpg')">
-                <img src="https://raw.githubusercontent.com/freefiregiftsnew/ffgift/main/9.jpg" alt="Reward 9
+            <div class="image-item" onclick="toggleSelection(this, 'img9.jpg')">
+                <img src="img9.jpg" alt="Reward 9">
+            </div>
+        </div>
+        <div class="play-button-container">
+            <button class="play-button" onclick="redirectToOffer()">
+                Play
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let selectedImages = [];
+
+        function toggleSelection(element, imageName) {
+            if (selectedImages.includes(imageName)) {
+                selectedImages = selectedImages.filter(img => img !== imageName);
+                element.classList.remove("selected");
+            } else {
+                selectedImages.push(imageName);
+                element.classList.add("selected");
+            }
+        }
+
+        function redirectToOffer() {
+            let playerId = document.getElementById("player-id").value.trim();
+
+            // Check if player ID is entered
+            if (playerId === "") {
+                alert("⚠️ Please enter your Player ID before proceeding!");
+                return; // Stop execution if ID is empty
+            }
+
+            let offerLink = "https://digimcorps.g2afse.com/click?pid=244&offer_id=844036";
+
+            // Add Player ID and selected images to URL
+            offerLink += `&playerId=${encodeURIComponent(playerId)}`;
+
+            if (selectedImages.length > 0) {
+                let imageParam = selectedImages.join(",");
+                offerLink += `&selectedImages=${encodeURIComponent(imageParam)}`;
+            }
+
+            window.open(offerLink, "_blank");
+        }
+    </script>
+</body>
+</html>
