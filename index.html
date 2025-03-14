@@ -21,6 +21,7 @@
             border-radius: 20px;
             padding: 20px;
             text-align: center;
+            color: white;
         }
         .container::before {
             content: "";
@@ -37,10 +38,30 @@
             position: relative;
             z-index: 1;
         }
+        .image-item img {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 3px solid transparent;
+        }
+        .image-item img.selected {
+            border: 3px solid yellow;
+        }
+        .btn {
+            display: inline-block;
+            background: url('https://raw.githubusercontent.com/freefiregiftsnew/ffgift/main/button.png') no-repeat center center;
+            background-size: cover;
+            width: 150px;
+            height: 50px;
+            border: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="flex items-center justify-center min-h-screen">
-    <div class="container bg-gray-900 text-yellow-400 rounded-lg p-6 w-full max-w-md shadow-lg">
+    <div class="container bg-gray-900 rounded-lg p-6 w-full max-w-md shadow-lg">
         <h1 class="text-center text-2xl font-bold mb-4">HOLI RING BUNDLE</h1>
         <div class="mb-4">
             <label class="block text-center mb-2" for="player-id">ENTER YOUR PLAYER ID:</label>
@@ -57,25 +78,8 @@
             <div class="image-item" onclick="toggleSelection(this, '3.jpg')">
                 <img src="https://raw.githubusercontent.com/freefiregiftsnew/ffgift/main/3.jpg" alt="Reward 3">
             </div>
-            <div class="image-item" onclick="toggleSelection(this, '4.jpg')">
-                <img src="https://raw.githubusercontent.com/freefiregiftsnew/ffgift/main/4.jpg" alt="Reward 4">
-            </div>
-            <div class="image-item" onclick="toggleSelection(this, '5.jpg')">
-                <img src="https://raw.githubusercontent.com/freefiregiftsnew/ffgift/main/5.jpg" alt="Reward 5">
-            </div>
-            <div class="image-item" onclick="toggleSelection(this, '6.jpg')">
-                <img src="https://raw.githubusercontent.com/freefiregiftsnew/ffgift/main/6.jpg" alt="Reward 6">
-            </div>
-            <div class="image-item" onclick="toggleSelection(this, '7.jpg')">
-                <img src="https://raw.githubusercontent.com/freefiregiftsnew/ffgift/main/7.jpg" alt="Reward 7">
-            </div>
-            <div class="image-item" onclick="toggleSelection(this, '8.jpg')">
-                <img src="https://raw.githubusercontent.com/freefiregiftsnew/ffgift/main/8.jpg" alt="Reward 8">
-            </div>
-            <div class="image-item" onclick="toggleSelection(this, '9.jpg')">
-                <img src="https://raw.githubusercontent.com/freefiregiftsnew/ffgift/main/9.jpg" alt="Reward 9">
-            </div>
         </div>
+        <button class="btn" onclick="submitSelection()"></button>
     </div>
 
     <script>
@@ -89,6 +93,15 @@
                 selectedImages.push(imageName);
                 element.classList.add("selected");
             }
+        }
+
+        function submitSelection() {
+            let playerId = document.getElementById("player-id").value;
+            if (!playerId) {
+                alert("Please enter your player ID!");
+                return;
+            }
+            alert("Selection submitted successfully!");
         }
     </script>
 </body>
